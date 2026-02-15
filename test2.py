@@ -5,11 +5,12 @@ router1=APIRouter(
     tags=["functions router"]
 )
 
+
 async def hello():
-    return "hello Zeeshan"
+    return "hello Zeeshan,I am a MiddleWare"
 
 
-@router1.get("/fun1")
+@router1.get("/fun1",middlewares=[hello])
 def fun1(text=Depends(hello)):
     print(text)
     print("this is function1")
