@@ -1,6 +1,7 @@
 from zeefast.app import ZeeFast
 from zeefast.response import HtmlResponse, JsonResponse
 from zeefast.status import status
+<<<<<<< HEAD
 from zeefast.depends import Depends
 
 
@@ -22,6 +23,13 @@ async def zeeshan(id,name,text=Depends(abc)):
   print("-"*20)
   print("Depends Result : ",text)
   print("-"*20)
+=======
+
+app=ZeeFast()
+
+@app.get("/zeeshan/{id}/{name}")
+async def zeeshan(id,name):
+>>>>>>> final-recovered-work
   print(id)
   print(name)
   return JsonResponse({"Name":"Zeeshan"},status_code=status.HTTP_200_OK)

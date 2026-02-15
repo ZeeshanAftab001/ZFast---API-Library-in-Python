@@ -2,12 +2,19 @@ import inspect
 import re
 from zeefast.response import Response, JsonResponse, HtmlResponse, PlainTextResponse
 from zeefast.status import status
+<<<<<<< HEAD
 from zeefast.depends import Depends
 from zeefast.api_router import APIRouter
 
 class ZeeFast:
     def __init__(self):
         self.routes = []  # [(method, regex, handler)]
+=======
+
+class ZeeFast:
+    def __init__(self):
+        self.routes = [] 
+>>>>>>> final-recovered-work
 
     def add_route(self, method, path):
         def wrapper(func):
@@ -16,9 +23,12 @@ class ZeeFast:
             return func
         return wrapper
     
+<<<<<<< HEAD
     def include_router(self, router: APIRouter):
         self.routes.extend(router.routes)
 
+=======
+>>>>>>> final-recovered-work
     def path_to_regex(self, path):
         # /user/{id} → ^/user/(?P<id>[^/]+)$
         path = re.sub(r"{(\w+)}", r"(?P<\1>[^/]+)", path)
@@ -63,6 +73,7 @@ class ZeeFast:
             match = pattern.match(path)
             if match:
                 path_params = match.groupdict()
+<<<<<<< HEAD
                 '''
                 Inorder to get the parameter of the handler
                 we will be using inspect.signature().This 
@@ -106,10 +117,22 @@ class ZeeFast:
                     result = await handler(**kwargs)
                 else:
                     result = handler(**kwargs)
+=======
+
+                # call handler
+                if inspect.iscoroutinefunction(handler):
+                    result = await handler(**path_params)
+                else:
+                    result = handler(**path_params)
+>>>>>>> final-recovered-work
 
                 res = self.convert_response(result)
                 await res.as_asgi(send)
                 return 
 
+<<<<<<< HEAD
+=======
+        # 404 if no match found
+>>>>>>> final-recovered-work
         res = HtmlResponse("<h1 style='color:red;'>Route Not Found</h1>", status_code=status.HTTP_404_NOT_FOUND)
         await res.as_asgi(send)
