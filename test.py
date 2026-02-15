@@ -1,11 +1,14 @@
-from zeefast import ZeeFast
-from response import HtmlResponse, JsonResponse
+from zeefast.app import ZeeFast
+from zeefast.response import HtmlResponse, JsonResponse
+from zeefast.status import status
 
 app=ZeeFast()
 
-@app.get("/zeeshan")
-async def zeeshan():
-  return JsonResponse({"Name":"Zeeshan"},status=200)
+@app.get("/zeeshan/{id}/{name}")
+async def zeeshan(id,name):
+  print(id)
+  print(name)
+  return JsonResponse({"Name":"Zeeshan"},status_code=status.HTTP_200_OK)
 
 @app.get("/about")
 def about():
