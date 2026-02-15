@@ -4,8 +4,8 @@
 
 ⭐ Level 2 Framework Core
 
-1️⃣ Dependency Injection (like FastAPI Depends)
-2️⃣ Path params: /user/{id}
+1️⃣ Dependency Injection (like FastAPI Depends) [DONE]
+2️⃣ Path params: /user/{id} [DONE]
 3️⃣ Query params auto parsing
 4️⃣ Middleware system
 5️⃣ Router groups (APIRouter)
